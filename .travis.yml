@@ -54,7 +54,6 @@ matrix:
         EXPERIMENTAL_NODE_GYP_PYTHON3=1
       before_install: choco install python
   allow_failures:
-    - env: NODE_GYP_FORCE_PYTHON=python3 EXPERIMENTAL_NODE_GYP_PYTHON3=1
     - env: >-
         PATH=/c/Python37:/c/Python37/Scripts:$PATH
         NODE_GYP_FORCE_PYTHON=/c/Python37/python.exe
