@@ -16,8 +16,13 @@ test('find python', function (t) {
     t.strictEqual(err, null)
     var proc = execFile(found, ['-V'], function (err, stdout, stderr) {
       t.strictEqual(err, null)
-      t.ok(stdout === '' || stderr === '')
-      t.ok(/Python 2/.test(stderr) || /Python 3/.test(stdout))
+      if (/Python 2/.test(stderr)) {
+        t.strictEqual(stdout, '')
+        t.ok(/Python 2/.test(stderr))
+      } else {
+        t.ok(/Python 3/.test(stdout))
+        t.strictEqual(stderr, '')
+      }
     })
     proc.stdout.setEncoding('utf-8')
     proc.stderr.setEncoding('utf-8')
